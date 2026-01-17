@@ -1,0 +1,63 @@
+#modal-competency-test {
+    .box {
+        padding-bottom: 13%;
+        background-image: url("../images/competency_test/competency_test_bg.jpg");
+    }
+
+    .point {
+        color: #F7B616;
+    }
+
+    .competency-title {
+        position: absolute;
+        top: 25%;
+        font-size: 1.625rem;
+        font-weight: 700;
+        color: #000;
+        line-height: 2.3rem;
+        letter-spacing: -0.7px;
+    }
+
+    .competency-text {
+        position: absolute;
+        top: 50.5%;
+        letter-spacing: 0.8px;
+        color: #000;
+        font-weight: 500;
+    }
+}
+
+.competency-btn {
+    &.is-link {
+        padding: 10px 25px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        color: #000;
+        border-radius: 40px;
+        background: ##{$hoverColor};
+        border: 0;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
+
+.modal-close {
+    &::before {
+        height: 4px;
+        background-color: #4E555B;
+    }
+
+    &::after {
+        width: 4px;
+        background-color: #4E555B;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: unset;
+    }
+}
