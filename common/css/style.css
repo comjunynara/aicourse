@@ -1,0 +1,110 @@
+@import url('./custom.css');
+
+html {overflow-y: auto;-ms-overflow-style:none; /* IE and Edge */scrollbar-width:none /* Firefox */}
+html::-webkit-scrollbar {display:none /* Chrome , Safari , Opera */}
+* { font-family: "Noto Sans KR", sans-serif, serif; } 
+br { font-family: sans-serif, serif; } 
+button {overflow:visible;border:none;padding:0;font-size: 0;background: inherit;box-shadow:none;border-radius:0;cursor:pointer}
+
+/* 말줄임 : 기본 1줄 */
+.ellipsis {overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;}
+.ellipsis.line_2 {-webkit-line-clamp: 2;}
+.ellipsis.line_3 {-webkit-line-clamp: 3;}
+
+.is-disabled {visibility: hidden;}
+
+.vjs-control .vjs-icon-placeholder {box-shadow: none !important;}
+
+.chapter-list .has-text-primary {font-weight: 700;color: #000 !important;}
+
+main { display: block; max-width: 1010px; min-width: 993px; height: auto; /* height: 600px; */ position: relative; overflow: hidden; margin: 0 auto; } 
+
+/* common */
+.text-padding-left-0 { padding-left: 0; } 
+.text-padding-left-1 { padding-left: 1em; } 
+.text-padding-left-2 { padding-left: 2em; } 
+.text-padding-left-3 { padding-left: 3em; } 
+.text-padding-left-4 { padding-left: 4em; } 
+.text-padding-left-5 { padding-left: 5em; } 
+.text-padding-left-6 { padding-left: 6em; } 
+.text-padding-left-7 { padding-left: 7em; } 
+/* video */
+.vjs-control.vjs-button { cursor: pointer; } 
+button.vjs-control.vjs-button::before,
+.current-page-str { font-size: 1.7em !important; } 
+/* button.vjs-control.vjs-button:hover { color: #F7B616; }  */
+.video-wrap { max-width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box;}
+.video-js .vjs-big-play-button { display: none !important; } 
+.menu-title { padding: 28px 44px 17px 56px;color: #fff; background: rgba(78, 85, 91, 0.5); } 
+.menu-title h3 { display: inline; font-family: "Noto Sans KR", sans-serif, serif !important; font-size: 1.3rem; font-weight: bold; } 
+.menu-title button { float: right; margin: 0 0.5em; } 
+ion-icon { font-size: 1.8em; } 
+.menu-title ion-icon { font-size: 1em; }
+
+/* side-menu */
+aside.menu#side-menu { display: block; position: absolute; top: 52%;transform: translateY(-50%); left: -297px;width: 297px; height: 475px; z-index: 30; background: rgba(65, 69, 77, 0.8); /* overflow-y: scroll; */overflow: hidden; -webkit-transition: 0.5s; -o-transition: 0.5s; transition: 0.5s;border-top-right-radius: 30px;border-bottom-right-radius: 30px;}
+
+aside #index-btn-competency-test { color: #338b52; border-color: #338b52; } 
+aside #index-btn-competency-test:hover { background-color: #338b52; border-color: #338b52; color: #fff; } 
+
+.video-wrap .video-dim { display: none; background-color: rgba(0, 0, 0, 0.4); z-index: 25; } 
+.vjs-control-bar { z-index: 20; } 
+@media screen and (max-width: 500px) { /* video */
+ button.vjs-control.vjs-button::before,
+ .current-page-str { font-size: 1em !important; } 
+ .video-js .vjs-control { width: 3em; } 
+ }
+
+/*title*/
+.content-title-wrap { margin: 0; } 
+
+/* 모달 공통 */
+.custom-modal.modal,
+.custom-modal .modal-close { position: absolute !important; }
+.modal .modal-content { max-width: 1010px; max-height: 568px; width: 100%; height: 100%;}
+.modal-content .box { background-repeat: no-repeat; background-position: center; background-size: 100%; position: relative; width: 100%; height: 100%; max-width: 1024px; max-height: 627px; display: flex; justify-content: flex-start; align-items: flex-end; padding-left: 13%; border-radius: 0; }
+.modal .utill-wrap {position: absolute;top: 4.5rem;right: 8rem;}
+.modal .btn-group {display: flex;gap: 1.438rem;}
+.modal .btn {position: relative; font-size: 1rem;color: #000;font-weight: 500;}
+
+/* 러닝맵 */
+.content-wrap { display: none; position: absolute; top: 0; left: 0; background: white; width: 100%;height: calc(100% - 30px); } 
+
+#modal-map .modal-content {position: relative;overflow: hidden;padding: 0;}
+#modal-map .modal-map-title {position: absolute;top: 10%;left: 13.5%;font-weight: 700;font-size: 1.625rem;color: #000;z-index: 1;}
+#modal-map .box { overflow: hidden; background: transparent url("../images/summary/bg_summary.png") no-repeat center / 100%; margin: 0; padding: 8rem 8rem 6rem; border-radius: 0;} 
+#modal-map .chapter-list { overflow-y: auto; display: flex; flex-direction: column; align-content: flex-start; gap: 1rem; width: 100%; height: 100%; max-height: 350px; font-size: 1em; }
+
+/* 학습명 */
+.class-wrap {display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100%; padding: 0 10%; background-image: url('../images/bg_intro.png');background-size: 100%;}
+.class-wrap .class-num {font-size: 2rem;font-weight: 700;color: #F7B616;}
+.class-wrap .class-title {font-size: 2rem;font-weight: 700;color: #000;}
+
+/* 학습목표 */
+.map-goal-list {display: block;position: relative;height: 100%;padding: 6rem 6rem 2rem 28%;background-image: url('../images/goal/bg_goal.jpg');background-size: 100%;background-color: #fff;box-sizing: border-box;}
+.map-goal-list ul {display: flex;flex-direction: column;gap: 0.2rem;}
+.map-goal-list p {font-size: 2rem;color: #000;font-weight: 500;font-size: 1.125rem;}
+.map-goal-list p::before {content: ' - ';}
+.map-goal-list .goal-title-list {overflow-y: auto;position: absolute;top: 18%;width:64%;max-height: 147px;}
+.map-goal-list .goal-detail-list {overflow-y: auto;position: absolute;top: 62%;width:64%;max-height: 147px;}
+
+.vjs-control.vjs-button.btn-index,
+.video-js .vjs-play-control,
+.video-js .vjs-control.btn-replay,
+.video-js .vjs-volume-panel.vjs-volume-panel-vertical,
+.video-js .vjs-control.full-info-map,
+.video-js .vjs-control.btn-prev,
+.video-js .vjs-control.btn-next {width: 1.875rem;}
+
+.video-js .vjs-time-control { display: block; } 
+.video-js .vjs-remaining-time { display: none; } 
+.video-js .vjs-time-control .vjs-duration-display,
+.video-js .vjs-time-divider span {font-size: 0.75rem;}
+.video-js .vjs-time-control .vjs-current-time-display {font-size: 1rem;}
+.video-js .vjs-time-control.vjs-time-divider { padding: 0; text-align: center; } 
+
+.full-screen-height { padding-top: 56.1328125% !important; } 
+
+@media (max-width: 900px) {
+    html {overflow-x: scroll;}
+}
