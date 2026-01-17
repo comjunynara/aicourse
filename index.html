@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 과정 소개</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #007BC8 0%, #005a94 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007BC8 0%, #005a94 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #e6f3ff 0%, #cce7ff 100%);
+            border-radius: 15px;
+        }
+
+        .intro-section h2 {
+            color: #007BC8;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #007BC8;
+        }
+
+        .course-card.practical {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e0f0ff 100%);
+            border-color: #007BC8;
+        }
+
+        .course-card.preview {
+            background: linear-gradient(135deg, #fff4e6 0%, #ffe4b3 100%);
+            border-color: #F5A623;
+        }
+
+        .course-card.preview::before {
+            content: '맛보기 강의';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #F5A623;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .course-number {
+            display: inline-block;
+            background: #007BC8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .course-card.preview .course-number {
+            background: #F5A623;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #ff4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .demo-badge i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+
+        .course-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 15px;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .course-meta i {
+            margin-right: 5px;
+        }
+
+        .preview-button {
+            display: inline-block;
+            background: #F5A623;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .preview-button:hover {
+            background: #e09517;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(245, 166, 35, 0.4);
+        }
+
+        .course-status {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #e9ecef;
+            color: #666;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .course-title {
+                font-size: 1.1rem;
+                flex-wrap: wrap;
+            }
+
+            .demo-badge {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> [AI기초] 업무 능력 향상을 위한 생성형 AI 활용 A to Z</h1>
+            <p>중소기업 재직 근로자 및 일반인 누구나 | 입문 과정 | 20개 차시 (차시당 25분)</p>
+        </header>
+
+        <div class="content">
+            <div class="intro-section">
+                <h2><i class="fas fa-lightbulb"></i> 과정 소개</h2>
+                <p>
+                    <strong>본 과정을 통해 학습자는 생성형 AI의 기본 개념부터 실무 활용까지 전반적인 지식을 습득하고, 다양한 업무 상황에서 AI 도구를 효율적으로 활용할 수 있습니다.</strong>
+                </p>
+                <p style="margin-top: 15px;">
+                    강의식 14개 차시, 시연 실습식 6개 차시로 구성되어 이론과 실습을 균형있게 학습할 수 있으며, 
+                    AI기초 훈련, 사업주 훈련(B2B), 내일배움카드(B2C) 모두 활용 가능합니다.
+                </p>
+            </div>
+
+            <h2 style="margin-bottom: 20px; color: #007BC8;"><i class="fas fa-list-ul"></i> 차시별 커리큘럼 (총 20차시)</h2>
+            
+            <div class="courses-grid">
+                <!-- 1차시 -->
+                <div class="course-card">
+                    <span class="course-number">1차시</span>
+                    <h3 class="course-title">생성형AI의 정의, 종류, 활용범위</h3>
+                    <p class="course-description">
+                        생성형AI의 개념, 종류, 생성원리 이해하고 다양한 업무 상황에서의 활용 사례를 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 2차시 -->
+                <div class="course-card">
+                    <span class="course-number">2차시</span>
+                    <h3 class="course-title">Q&A로 알아보는 생성형 AI 윤리 1 - 윤리적 활용과 저작권</h3>
+                    <p class="course-description">
+                        생성형 AI의 윤리적 활용 방법과 저작권 이슈에 대해 Q&A 형식으로 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 3차시 -->
+                <div class="course-card">
+                    <span class="course-number">3차시</span>
+                    <h3 class="course-title">Q&A로 알아보는 생성형 AI 윤리 2 - 윤리적 책임성과 허위·왜곡 정보 대응</h3>
+                    <p class="course-description">
+                        AI 사용에 대한 윤리적 책임성과 허위·왜곡 정보에 대처하는 방법을 배웁니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 4차시 -->
+                <div class="course-card">
+                    <span class="course-number">4차시</span>
+                    <h3 class="course-title">Q&A로 알아보는 생성형 AI 윤리 3 - 개인정보와 데이터 보안</h3>
+                    <p class="course-description">
+                        생성형 AI 사용 시 개인정보 보호와 데이터 보안의 중요성을 이해합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 5차시 -->
+                <div class="course-card">
+                    <span class="course-number">5차시</span>
+                    <h3 class="course-title">생성형 AI의 기본 개념 8가지</h3>
+                    <p class="course-description">
+                        생성형 AI를 이해하기 위한 8가지 핵심 개념을 체계적으로 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 6차시 - 맛보기 강의 -->
+                <div class="course-card preview">
+                    <span class="course-number">6차시</span>
+                    <h3 class="course-title">명확하게 요청하는 프롬프트 작성법</h3>
+                    <p class="course-description">
+                        효과적이고 명확한 프롬프트 작성 기법을 익혀 AI의 답변 품질을 높입니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                    <a href="https://comjunynara.github.io/aicourse/06/01.html" 
+                       target="_blank" 
+                       class="preview-button">
+                        <i class="fas fa-play"></i> 맛보기 강의 보기
+                    </a>
+                </div>
+
+                <!-- 7차시 -->
+                <div class="course-card">
+                    <span class="course-number">7차시</span>
+                    <h3 class="course-title">ChatGPT, Gemini, Perplexity 특징 비교</h3>
+                    <p class="course-description">
+                        주요 생성형 AI 도구들의 특징과 장단점을 비교 분석합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 8차시 -->
+                <div class="course-card">
+                    <span class="course-number">8차시</span>
+                    <h3 class="course-title">
+                        ChatGPT, Gemini, Perplexity 사용 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        ChatGPT, Gemini, Perplexity의 실제 사용법을 시연을 통해 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+
+                <!-- 9차시 -->
+                <div class="course-card">
+                    <span class="course-number">9차시</span>
+                    <h3 class="course-title">Claude, Wrtn, Clova-X 특징 비교</h3>
+                    <p class="course-description">
+                        Claude, 뤼튼, 클로바X의 특징과 차별점을 비교 분석합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 10차시 -->
+                <div class="course-card">
+                    <span class="course-number">10차시</span>
+                    <h3 class="course-title">
+                        Claude, Wrtn, Clova-X 사용 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        Claude, 뤼튼, 클로바X의 실제 사용법을 시연을 통해 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+
+                <!-- 11차시 -->
+                <div class="course-card">
+                    <span class="course-number">11차시</span>
+                    <h3 class="course-title">회의 내용을 요약하고, 회의록 자동 작성하기</h3>
+                    <p class="course-description">
+                        AI를 활용하여 회의 내용을 효율적으로 요약하고 회의록을 자동 작성하는 방법을 학습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 12차시 -->
+                <div class="course-card">
+                    <span class="course-number">12차시</span>
+                    <h3 class="course-title">보고서 자동 작성하기</h3>
+                    <p class="course-description">
+                        생성형 AI를 활용하여 업무 보고서를 효율적으로 작성하는 기법을 익힙니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 13차시 -->
+                <div class="course-card">
+                    <span class="course-number">13차시</span>
+                    <h3 class="course-title">PPT 자동 제작 생성형 AI 도구 소개</h3>
+                    <p class="course-description">
+                        프레젠테이션을 자동으로 제작해주는 다양한 생성형 AI 도구들을 소개합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 14차시 -->
+                <div class="course-card">
+                    <span class="course-number">14차시</span>
+                    <h3 class="course-title">
+                        PPT 자동 제작 생성형 AI 도구 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        PPT 자동 제작 도구의 실제 사용법을 시연을 통해 체험합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+
+                <!-- 15차시 -->
+                <div class="course-card">
+                    <span class="course-number">15차시</span>
+                    <h3 class="course-title">이미지 제작 생성형 AI 도구 소개</h3>
+                    <p class="course-description">
+                        이미지를 생성하는 다양한 AI 도구들의 특징과 활용법을 소개합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 16차시 -->
+                <div class="course-card">
+                    <span class="course-number">16차시</span>
+                    <h3 class="course-title">
+                        이미지 제작 생성형 AI 도구 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        이미지 제작 AI 도구의 실제 사용법을 시연을 통해 실습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+
+                <!-- 17차시 -->
+                <div class="course-card">
+                    <span class="course-number">17차시</span>
+                    <h3 class="course-title">영상제작 AI 도구 소개</h3>
+                    <p class="course-description">
+                        영상을 제작할 수 있는 다양한 생성형 AI 도구들을 소개합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 18차시 -->
+                <div class="course-card">
+                    <span class="course-number">18차시</span>
+                    <h3 class="course-title">
+                        영상제작 AI 도구 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        영상제작 AI 도구의 실제 사용법을 시연을 통해 체험합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+
+                <!-- 19차시 -->
+                <div class="course-card">
+                    <span class="course-number">19차시</span>
+                    <h3 class="course-title">앱 개발 AI 도구 소개</h3>
+                    <p class="course-description">
+                        코딩 없이 앱을 개발할 수 있는 생성형 AI 도구들을 소개합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                    </div>
+                </div>
+
+                <!-- 20차시 -->
+                <div class="course-card">
+                    <span class="course-number">20차시</span>
+                    <h3 class="course-title">
+                        앱 개발 AI 도구 시연
+                        <span class="demo-badge"><i class="fas fa-play-circle"></i>시연</span>
+                    </h3>
+                    <p class="course-description">
+                        앱 개발 AI 도구의 실제 사용법을 시연을 통해 실습합니다.
+                    </p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25분 이내</span>
+                        <span><i class="fas fa-laptop-code"></i> 시연 실습</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><i class="fas fa-heart"></i> AI 과정으로 미래를 준비하세요</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">© 2026 한국이러닝컨설팅. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 맛보기 강의 버튼 클릭 이벤트
+        document.querySelector('.preview-button').addEventListener('click', function(e) {
+            // 새 탭에서 열기 전 확인
+            console.log('맛보기 강의 페이지로 이동합니다.');
+        });
+
+        // 카드 호버 효과 강화
+        const cards = document.querySelectorAll('.course-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
