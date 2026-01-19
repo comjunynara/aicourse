@@ -45,7 +45,7 @@ var config = {
         "4": {
             title: "확인 퀴즈",
             type: "quiz",
-            content_extension: "aac"
+            content_extension: "AAC"
         },
         "5": {
             title: "정리하기",
@@ -59,4 +59,5 @@ var config = {
         }
     
     }
+
 };
